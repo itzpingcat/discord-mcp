@@ -173,6 +173,30 @@ async def call_tool(name: str, arguments: Any) -> list[TextContent]:
                 if not guild:
                     return [TextContent(type="text", text=error)]
             
+            # Check if target_part is actually a server name (when no "/" was used)
+            # This catches cases like "OpenWAI server" where user meant the server but didn't specify a channel
+            if not server_part:
+                # Try to resolve as server first to give a better error
+                test_guild, _ = await resolver.resolve_server(target_part)
+                if test_guild:
+                    # It's a valid server name but no channel specified!
+                    # List available channels to help the user
+                    channels = []
+                    for channel in test_guild.text_channels:
+                        channels.append(f"  • #{channel.name}")
+                    
+                    channel_list = "\n".join(channels[:10])  # Show first 10
+                    if len(test_guild.text_channels) > 10:
+                        channel_list += f"\n  ... and {len(test_guild.text_channels) - 10} more"
+                    
+                    return [TextContent(
+                        type="text",
+                        text=f"ERROR: Found server '{test_guild.name}' but no channel was specified.\n\n"
+                             f"Please specify which channel to send to using format: '{test_guild.name}/channel_name'\n\n"
+                             f"Available channels in {test_guild.name}:\n{channel_list}\n\n"
+                             f"Example: '{test_guild.name}/general'"
+                    )]
+            
             # Try as channel first
             channel, error = await resolver.resolve_channel(target_part, guild)
             if channel:
