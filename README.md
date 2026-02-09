@@ -58,7 +58,7 @@ set DISCORD_TOKEN=your_bot_token_here
 ### 4. Run the Server
 
 ```bash
-python discord_mcp_server.py
+python path/to/discord-mcp
 ```
 
 ## Usage Examples
@@ -72,7 +72,7 @@ Add to your `claude_desktop_config.json`:
   "mcpServers": {
     "discord": {
       "command": "python",
-      "args": ["/path/to/discord-mcp/main.py"],
+      "args": ["/path/to/discord-mcp"],
       "env": {
         "DISCORD_TOKEN": "your_bot_token_here"
       }
