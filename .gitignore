@@ -1,0 +1,96 @@
+# =========================
+# Python bytecode & caches
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual environments
+# =========================
+.env
+.venv
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# =========================
+# Distribution / packaging
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# =========================
+# PyInstaller
+# =========================
+*.manifest
+*.spec
+
+# =========================
+# Testing & coverage
+# =========================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+hypothesis/
+
+# =========================
+# Type checking
+# =========================
+.mypy_cache/
+.dmypy.json
+.pyre/
+.pytype/
+
+# =========================
+# Jupyter / notebooks
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Logs & runtime files
+# =========================
+*.log
+*.sqlite3
+*.db
+
+# =========================
+# IDEs & editors
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# =========================
+# dotenv / secrets
+# =========================
+.env.*
+!.env.example
+
+# =========================
+# Local config overrides
+# =========================
+config.local.*
+settings.local.*
+
+# =========================
+# Cache directories
+# =========================
+.cache/
